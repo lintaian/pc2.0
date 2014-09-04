@@ -1,0 +1,61 @@
+@CHARSET "UTF-8";
+.hide {
+	display: none;
+}
+.ng-hide {
+	display: none;
+}
+/* 分左右两格 */
+.listview {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+	color: #333;
+	text-shadow: 0 1px 0 #f3f3f3;
+}
+.listview .label {
+	width: 35%;
+	float: left;
+	text-align: right;
+	padding-right: 5%;
+}
+.listview .text {
+	width: 55%;
+	float: left;
+	padding-left: 5%;
+}
+.listview li {
+	background-color: #fff;
+	border-color: #ddd;
+	color: #333;
+	text-shadow: 0 1px 0 #f3f3f3;
+	padding: .5em 1em;
+	border-width: 1px 0 0 0;
+	border-style: solid;
+	margin: 0;
+	display: block;
+	position: relative;
+	text-align: left;
+	text-overflow: ellipsis;
+}
+.listview li.topic {
+	background-color: #e9e9e9;
+	text-shadow: 0 1px 0 #eee;
+	font-weight: bold;
+	padding: .5em 1.143em;
+	font-size: 14px;
+	cursor: default;
+	outline: 0;
+}
+.listview li.detail {
+	padding: 0;
+}
+/* li多行显示  */
+.none-inline li,
+.none-inline li a {
+	overflow: auto!important;
+	white-space: normal!important;
+}
+.active {
+	background: rgb(186, 202, 206)!important;
+}

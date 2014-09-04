@@ -1,0 +1,85 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" import="java.util.*" pageEncoding="UTF-8"%>
+<div data-role="page" id="score" class="hide" data-ng-controller="scoreCtrl">
+	<jsp:include page="/tpl/header.jsp" flush="true">
+		<jsp:param name="title" value="{{title}}"/>
+	</jsp:include>
+	<div data-role="header" data-position="fixed" style="top: 43px;">
+		<div class="ui-grid-a">
+		  <div class="ui-block-a">
+			  <div class="ui-btn active" style="margin: 0;width: 100%;" data-ng-click="show.setType('data')"
+			  	data-ng-class="{active: show.type=='data'}">
+					<span class="ui-btn-inner">
+						<span class="ui-btn-text">数据</span>
+					</span>
+			  </div> 
+		  </div>
+		  <div class="ui-block-b">
+			  <div class="ui-btn" style="margin: 0;width: 100%;" data-ng-click="show.setType('chart')"
+			  	data-ng-class="{active: show.type=='chart'}">
+					<span class="ui-btn-inner">
+						<span class="ui-btn-text">图</span>
+					</span>
+			  </div> 
+		  </div>
+		</div>
+	</div>
+	<div class="content">
+		<ul data-role="listview" class="none-inline listview" data-ng-repeat="d in data" data-ng-show="show.type=='data'">
+		  <li class="topic ui-btn-icon-right" 
+		  	data-ng-class="{'ui-icon-carat-d': d.batchid!=active.id, 'ui-icon-carat-u': d.batchid==active.id}" 
+		  	data-ng-bind="d.batchname" data-ng-click="active.set(d.batchid)"></li>
+		  <li class="detail" data-ng-show="d.batchid==active.id">
+			  <ul class="listview">
+				  <li><span class="label">试卷满分:</span><span class="text" data-ng-bind="d.totalscore"></span></li>
+				  <li><span class="label">个人得分:</span><span class="text" data-ng-bind="d.score"></span></li>
+				  <li><span class="label">班级平均:</span><span class="text" data-ng-bind="d.classavg"></span></li>
+				  <li><span class="label">班级最高:</span><span class="text" data-ng-bind="d.classmax"></span></li>
+				  <li><span class="label">班级最低:</span><span class="text" data-ng-bind="d.classmin"></span></li>
+				  <li><span class="label">班级排名:</span><span class="text" data-ng-bind="d.classorder"></span></li>
+				  <li><span class="label">年级平均:</span><span class="text" data-ng-bind="d.gradeavg"></span></li>
+				  <li><span class="label">年级最高:</span><span class="text" data-ng-bind="d.grademax"></span></li>
+				  <li><span class="label">年级最低:</span><span class="text" data-ng-bind="d.grademin"></span></li>
+				  <li><span class="label">年级排名:</span><span class="text" data-ng-bind="d.gradeorder"></span></li>
+				  <li data-ng-if="id=='total'">
+					  <div class="ui-btn ui-shadow ui-btn-corner-all ui-btn-up-c" style="margin: 0 2px;"
+					  	data-ng-click="changePage('#scoreDetail', '', 'scoreDetailCtrl', d.batchid, d.batchname)">
+							<span class="ui-btn-inner">
+								<span class="ui-btn-text">详情</span>
+							</span>
+					  </div> 
+				  </li>
+				  <li data-ng-if="id!='total'">
+				  	<div class="ui-grid-b">
+					  <div class="ui-block-a">
+						  <div class="ui-btn ui-shadow ui-btn-corner-all ui-btn-up-c" style="margin: 0 2px;"
+						  	data-ng-click="changePage('#question', '', 'questionCtrl', d.examid, d.examname)">
+								<span class="ui-btn-inner">
+									<span class="ui-btn-text">小题分</span>
+								</span>
+						  </div> 
+					  </div>
+					  <div class="ui-block-b">
+						  <div class="ui-btn ui-shadow ui-btn-corner-all ui-btn-up-c" style="margin: 0 2px;"
+						  	data-ng-click="changePage('#knowledge', '', 'knowledgeCtrl', d.examid, d.examname)">
+								<span class="ui-btn-inner">
+									<span class="ui-btn-text">知识点</span>
+								</span>
+						  </div> 
+					  </div>
+					  <div class="ui-block-c">
+						  <div class="ui-btn ui-shadow ui-btn-corner-all ui-btn-up-c" style="margin: 0 2px;"
+						  	data-ng-click="changePage('#power', '', 'powerCtrl', d.examid, d.examname)">
+								<span class="ui-btn-inner">
+									<span class="ui-btn-text">能力值</span>
+								</span>
+						  </div> 
+					  </div>
+					</div>
+				  </li>
+			  </ul>
+		  </li>
+		</ul>
+		<div id="scoreChart" data-ng-show="show.type=='chart'" style="margin-left: -11%;"></div>
+	</div>
+	<%@include file="/tpl/footer.html"%>
+</div>

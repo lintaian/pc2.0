@@ -1,0 +1,27 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" import="java.util.*" pageEncoding="UTF-8"%>
+<div data-role="page" id="mainPage" class="hide" data-ng-controller="indexCtrl">
+	<jsp:include page="/tpl/header.jsp" flush="true">
+		<jsp:param name="title" value="乐培生师生平台"/>
+	</jsp:include>
+	<div class="content">
+		<ul data-role="listview">
+			<li data>
+				<a href="javascript:void(0)" data-transition="slide" 
+					data-ng-click="changePage('#score', '', 'scoreCtrl', 'total', '考试总分')">考试总分</a>
+			</li>
+			<li data-ng-repeat="s in subject">
+				<a href="javascript:void(0)" data-transition="slide" data-ng-bind="s.subjectname"
+					data-ng-click="changePage('#score', '', 'scoreCtrl', s.subjectid, s.subjectname)"></a>
+			</li>
+			<li>
+				<a href="javascript:void(0)" data-transition="slide"
+					data-ng-click="changePage('#knowledge', '', 'knowledgeCtrl')">知识点</a>
+			</li>
+			<li>
+				<a href="javascript:void(0)" data-transition="slide"
+					data-ng-click="changePage('#power', '', 'powerCtrl')">能力值</a>
+			</li>
+		</ul>
+	</div>
+	<%@include file="/tpl/footer.html"%>
+</div>
