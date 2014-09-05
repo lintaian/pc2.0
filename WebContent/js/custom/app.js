@@ -48,7 +48,7 @@ define(['angular', 'jquery'], function(angular, $) {
 				title = '横向比较';
 				legend = [];
 				boundaryGap = true;
-				xAxis = [ '满分', '\n得分', '班均分', '\n班最高', '班最低', '\n级均分', '级最高', '\n级最低' ];
+				xAxis = [ '试卷\n满分', '个人\n得分', '班级\n均分', '班级\n最高', '班级\n最低', '年级\n均分', '年级\n最高', '年级\n最低' ];
 				series = [{
 					name: '分数',
 					type: 'bar',
@@ -59,7 +59,7 @@ define(['angular', 'jquery'], function(angular, $) {
 			} else {
 				boundaryGap = false;
 				title = '纵向比较';
-				legend = [ '满分', '得分', '班均分', '班最高', '班最低', '级均分', '级最高', '级最低' ];
+				legend = [ '试卷\n满分', '个人\n得分', '班级\n均分', '班级\n最高', '班级\n最低', '年级\n均分', '年级\n最高', '年级\n最低' ];
 				for (var i = 0; i < legend.length; i++) {
 					series.push({
 						name: legend[i],
@@ -115,7 +115,7 @@ define(['angular', 'jquery'], function(angular, $) {
 					Util.initChart(Util.getOption({
 						title: d.examname,
 						legend: [],
-						xAxis: [ '满分', '\n得分', '班均分', '\n班最高', '班最低', '\n级均分', '级最高', '\n级最低' ],
+						xAxis: [ '试卷\n满分', '个人\n得分', '班级\n均分', '班级\n最高', '班级\n最低', '年级\n均分', '年级\n最高', '年级\n最低' ],
 						series: [{
 							name: '分数',
 							type: 'bar',
