@@ -66,22 +66,19 @@ define([ 'jquery', 'echarts' ], function(jquery, echarts) {
 			}
 			return option;
 		}
-		Util.resizeDiv = function(ele, wRate, hRate) {
-			 if (arguments.length != 3) {
-					wRate = 1.25;
-					hRate = 0.7;
-			 }
-			 var pagewidth = $(window).width();
-			 var pageheight = $(window).height();
-			 $('#' + ele).height(pageheight * hRate);
-			 $('#' + ele).width(pagewidth * wRate);
-		 };
+		Util.resizeDiv = function(ele, noResize) {
+			var hRate = 0.7;
+			var pagewidth = $(window).width();
+			var pageheight = $(window).height();
+			$('#' + ele).height(pageheight * hRate);
+			$('#' + ele).width(noResize ? pagewidth : pagewidth + 70);
+		};
 		Util.getPageHeight = function() {
 			return $(window).height();
 		}
-		Util.initChart = function(option, id, cloneId, resizeOption) {
-			if (resizeOption) {
-				Util.resizeDiv(id, resizeOption.wRate, resizeOption.hRate);
+		Util.initChart = function(option, id, cloneId, noResize) {
+			if (noResize) {
+				Util.resizeDiv(id, noResize);
 			} else {
 				Util.resizeDiv(id);
 			}

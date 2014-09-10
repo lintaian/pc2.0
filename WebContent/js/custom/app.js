@@ -2,6 +2,7 @@ define(['angular', 'jquery'], function(angular, $) {
 	return angular.module('app', ['resource'])
 	.controller('mainCtrl', function($scope, Common) {
 		Util.scopes.mainCtrl = $scope;
+		$scope.title = '乐培生师生平台';
 		Common.getSession({name: 'loginUser'}, function(data) {
 			$scope.user = data; 
 			console.log(data);
@@ -37,7 +38,7 @@ define(['angular', 'jquery'], function(angular, $) {
 		}
 		$scope.setData = function(data) {
 			$scope.data = data;
-			$scope.active.set($scope.data[0].batchid, true);
+			$scope.active.set(data[0].batchid, true);
 			var title,
 				legend = [],
 				xAxis = [],
@@ -161,7 +162,7 @@ define(['angular', 'jquery'], function(angular, $) {
 		Util.scopes.questionImgCtrl = $scope;
 		var $parent = $scope.$parent;
 		$scope.init = function(id, name) {
-			$scope.title = name;
+			$scope.title = '第 ' + name + ' 题';
 			$scope.questionId = id;
 			$scope.img = [{
 				name: 'img/1.jpg'
@@ -214,7 +215,7 @@ define(['angular', 'jquery'], function(angular, $) {
 					}],
 					type: 'radar',
 					boundaryGap: false
-				}), 'knowledgeChart', '', {wRate: 1.0, hRate: 0.7});
+				}), 'knowledgeChart', '', true);
 			});
 		}
 		$scope.active = {
@@ -272,7 +273,7 @@ define(['angular', 'jquery'], function(angular, $) {
 					}],
 					type: 'radar',
 					boundaryGap: false
-				}), 'powerChart', '', {wRate: 1.0, hRate: 0.7});
+				}), 'powerChart', '', true);
 			});
 		}
 		$scope.active = {

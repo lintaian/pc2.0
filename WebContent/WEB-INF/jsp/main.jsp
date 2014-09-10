@@ -20,6 +20,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<link rel="stylesheet" href="css/main.css">
 	<link rel="stylesheet" href="css/styles.css">
 	<script src="js/lib/slidr.min.js"></script>
+	<script src="js/lib/fastclick.js"></script>
 </head>
 <body data-ng-controller="mainCtrl">
 	<%@include file="/tpl/score.html" %>
@@ -31,5 +32,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<%@include file="/tpl/updatePwd.html" %>
 	<%@include file="/tpl/dialogs.html" %>
 	<script data-main="js/require/main" src="js/lib/require.js"></script>
+	<script>
+	  	window.addEventListener('load', function () {
+  			FastClick.attach(document.body);
+  		}, false);
+	</script>
 </body>
 </html>
