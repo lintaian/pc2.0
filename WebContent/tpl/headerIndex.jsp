@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" import="java.util.*" pageEncoding="UTF-8"%>
 <div data-role="header" data-position="fixed" data-theme="b" style="z-index: 99999">
-	<a href="#mainPage" data-role="button" data-icon="home" data-transition="slidedown">首页</a>
+	<a style="display: none;"></a>
   	<h1><%= request.getParameter("title")%></h1>
   	<a href="javascript:void(0)" data-role="button" data-icon="gear" data-iconpos="notext" data-custom="logout"
   		data-ng-click="tool.show=!tool.show"></a>
